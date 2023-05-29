@@ -12,7 +12,7 @@ def getdata(name):
     datadatereg = re.compile(r'data-date="(.*?)" data-level')
     datacountreg = re.compile(r'rx="2" ry="2">(.*?) contribution')
     datadate = datadatereg.findall(data)
-    datacount = datacountreg.findall(data)
+    datacount = list(map(int, [0 if i == "No" else i for i in datacount]))
     datacount = list(map(int, datacount))
     contributions = sum(datacount)
     datalist = []
