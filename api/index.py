@@ -10,7 +10,7 @@ def getdata(name):
     gitpage = requests.get("https://github.com/" + name)
     data = gitpage.text
     datadatereg = re.compile(r'data-date="(.*?)" data-level')
-    datacountreg = re.compile(r'data-count="(.*?)" data-date')
+    datacountreg = re.compile(r'rx="2" ry="2">(.*?) contribution')
     datadate = datadatereg.findall(data)
     datacount = datacountreg.findall(data)
     datacount = list(map(int, datacount))
